@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SOBIT Brand Colors - Exact HEX values converted to HSL */
+    /* #F5F7FA */
+    --background: 216 33% 97%;
+    /* #2E2E2E */
+    --foreground: 0 0% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 18%;
+
+    /* Primary: #0B3C8C - Deep SOBIT Blue */
+    --primary: 216 85% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: #0E4FBF - SOBIT Blue Secondary */
+    --secondary: 218 86% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: Light gray for backgrounds */
+    --muted: 216 33% 95%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent: #18B88A - SOBIT Green */
+    --accent: 160 77% 41%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 20% 90%;
+    --input: 216 20% 90%;
+    --ring: 216 85% 30%;
+
+    --radius: 0.5rem;
+
+    /* Custom SOBIT tokens */
+    /* Gradient: #0B3C8C to #0E4FBF */
+    --hero-gradient: linear-gradient(135deg, hsl(216 85% 30%) 0%, hsl(218 86% 40%) 100%);
+    --card-shadow: 0 4px 6px -1px hsl(216 85% 30% / 0.06), 0 2px 4px -2px hsl(216 85% 30% / 0.03);
+    --card-shadow-hover: 0 20px 25px -5px hsl(216 85% 30% / 0.08), 0 8px 10px -6px hsl(216 85% 30% / 0.05);
+    --glow-accent: 0 0 20px hsl(160 77% 41% / 0.25);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 18%;
+    --sidebar-primary: 216 85% 30%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 216 33% 97%;
+    --sidebar-accent-foreground: 0 0% 18%;
+    --sidebar-border: 216 20% 90%;
+    --sidebar-ring: 216 85% 30%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 216 33% 97%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 216 33% 97%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 216 33% 97%;
+
+    /* Primary: Lighter blue for dark mode */
+    --primary: 218 86% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 216 85% 25%;
+    --secondary-foreground: 216 33% 97%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 216 20% 65%;
+
+    --accent: 160 77% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 216 33% 97%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 218 86% 55%;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 216 33% 97%;
+    --sidebar-primary: 218 86% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 216 33% 97%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 218 86% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .card-elevated {
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .accent-glow {
+    box-shadow: var(--glow-accent);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0; 
+      transform: scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
+  }
+}
